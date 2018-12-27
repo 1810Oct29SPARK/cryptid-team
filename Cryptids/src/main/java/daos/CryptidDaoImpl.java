@@ -1,7 +1,6 @@
 package daos;
 
 import java.io.IOException;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.Accounts;
 import beans.Cryptid;
 import util.ConnectionUtil;
 
@@ -48,7 +46,7 @@ public class CryptidDaoImpl implements CryptidDao {
 	}
 
 	public List<Cryptid> getAccountsById(int id) {
-		List<Cryptid> cl=new ArrayList<Cryptid>();
+		List<Cryptid> cl = new ArrayList<Cryptid>();
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
 			String sql = "SELECT * FROM CRYPTID_CRYPTIDS WHERE C_ID = ?";
 			PreparedStatement p = con.prepareStatement(sql);
@@ -59,8 +57,8 @@ public class CryptidDaoImpl implements CryptidDao {
 				String name = rs.getString("NAME");
 				String diet = rs.getString("DIET");
 				int weight = rs.getInt("AVG_1WEGITH");
-				String category= rs.getString("CLASS");
-				cl.add(new Cryptid(cid,name,diet,weight,category));
+				String category = rs.getString("CLASS");
+				cl.add(new Cryptid(cid, name, diet, weight, category));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
