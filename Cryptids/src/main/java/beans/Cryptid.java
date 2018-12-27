@@ -15,6 +15,10 @@ private int avgWeight;
 private String category;
 private int id;
 
+public Cryptid() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 public String getName() {
 	return name;
 }
