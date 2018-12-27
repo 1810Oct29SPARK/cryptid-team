@@ -1,177 +1,688 @@
-!SESSION 2018-12-27 10:59:01.501 -----------------------------------------------
-eclipse.buildId=4.9.0.I20180906-0745
-java.version=1.8.0_191
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product org.eclipse.epp.package.jee.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
-!ENTRY oracle.eclipse.tools.webtier.jsf 4 0 2018-12-27 10:59:10.891
-!MESSAGE FrameworkEvent ERROR
-!STACK 0
-org.osgi.framework.BundleException: Could not resolve module: oracle.eclipse.tools.webtier.jsf [1122]
-  Unresolved requirement: Require-Bundle: oracle.eclipse.tools.webtier.jsf.facelet; bundle-version="[17.2.0,18.0.0)"
-    -> Bundle-SymbolicName: oracle.eclipse.tools.webtier.jsf.facelet; bundle-version="17.2.0.201806071916"; singleton:="true"
-       oracle.eclipse.tools.webtier.jsf.facelet [1123]
-         No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
-  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource oracle.eclipse.tools.webtier.jsf [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf"; singleton:="true"] because it is exposed to package 'javax.servlet' from resources oracle.eclipse.tools.webtier.jsf.facelet [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf.facelet"; singleton:="true"] and javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"] via two dependency chains.
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:28:28.897
+!MESSAGE Publishing beginning.
 
-Chain 1:
-  oracle.eclipse.tools.webtier.jsf [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf"; singleton:="true"]
-    require: (&(osgi.wiring.bundle=oracle.eclipse.tools.webtier.jsf.facelet)(&(bundle-version>=17.2.0)(!(bundle-version>=18.0.0))))
-     |
-    provide: osgi.wiring.bundle: oracle.eclipse.tools.webtier.jsf.facelet
-  oracle.eclipse.tools.webtier.jsf.facelet [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf.facelet"; singleton:="true"]
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:28:28.901
+!MESSAGE Module not changed:[Cryptids]
 
-Chain 2:
-  oracle.eclipse.tools.webtier.jsf [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf"; singleton:="true"]
-    require: (&(osgi.wiring.bundle=oracle.eclipse.tools.webtier.javawebapp)(&(bundle-version>=17.2.0)(!(bundle-version>=18.0.0))))
-     |
-    provide: osgi.wiring.bundle; bundle-version:Version="17.2.0.201806071916"; osgi.wiring.bundle="oracle.eclipse.tools.webtier.javawebapp"; singleton:="true"
-  org.apache.commons.logging [osgi.identity; type="osgi.bundle"; version:Version="1.2.0.v20180409-1502"; osgi.identity="org.apache.commons.logging"]
-    import: (osgi.wiring.package=javax.servlet)
-     |
-    export: osgi.wiring.package: javax.servlet
-  javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"]
-	at org.eclipse.osgi.container.Module.start(Module.java:447)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1685)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1664)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1627)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1558)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
-	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:233)
-	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:343)
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:28:28.917
+!MESSAGE Total deleted modules: 0
 
-!ENTRY oracle.eclipse.tools.webtier.jsf.facelet 4 0 2018-12-27 10:59:10.955
-!MESSAGE FrameworkEvent ERROR
-!STACK 0
-org.osgi.framework.BundleException: Could not resolve module: oracle.eclipse.tools.webtier.jsf.facelet [1123]
-  Bundle was not resolved because of a uses constraint violation.
-  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource oracle.eclipse.tools.webtier.jsf.facelet [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf.facelet"; singleton:="true"] because it exports package 'javax.servlet' and is also exposed to it from resource javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"] via the following dependency chain:
-
-  oracle.eclipse.tools.webtier.jsf.facelet [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf.facelet"; singleton:="true"]
-    require: (&(osgi.wiring.bundle=oracle.eclipse.tools.webtier.javawebapp)(&(bundle-version>=17.2.0)(!(bundle-version>=18.0.0))))
-     |
-    provide: osgi.wiring.bundle; bundle-version:Version="17.2.0.201806071916"; osgi.wiring.bundle="oracle.eclipse.tools.webtier.javawebapp"; singleton:="true"
-  org.apache.commons.logging [osgi.identity; type="osgi.bundle"; version:Version="1.2.0.v20180409-1502"; osgi.identity="org.apache.commons.logging"]
-    import: (osgi.wiring.package=javax.servlet)
-     |
-    export: osgi.wiring.package: javax.servlet
-  javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"]
-	at org.eclipse.osgi.container.Module.start(Module.java:447)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1685)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1664)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1627)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1558)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
-	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:233)
-	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:343)
-
-!ENTRY oracle.eclipse.tools.webtier.jsf.ui 4 0 2018-12-27 10:59:11.074
-!MESSAGE FrameworkEvent ERROR
-!STACK 0
-org.osgi.framework.BundleException: Could not resolve module: oracle.eclipse.tools.webtier.jsf.ui [1124]
-  Unresolved requirement: Require-Bundle: oracle.eclipse.tools.webtier.jsf; bundle-version="[17.2.0,18.0.0)"; visibility:="reexport"
-    -> Bundle-SymbolicName: oracle.eclipse.tools.webtier.jsf; bundle-version="17.2.0.201806071916"; singleton:="true"
-       oracle.eclipse.tools.webtier.jsf [1122]
-         Unresolved requirement: Require-Bundle: oracle.eclipse.tools.webtier.jsf.facelet; bundle-version="[17.2.0,18.0.0)"
-           -> Bundle-SymbolicName: oracle.eclipse.tools.webtier.jsf.facelet; bundle-version="17.2.0.201806071916"; singleton:="true"
-              oracle.eclipse.tools.webtier.jsf.facelet [1123]
-                No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
-  org.osgi.service.resolver.ResolutionException: Uses constraint violation. Unable to resolve resource oracle.eclipse.tools.webtier.jsf [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf"; singleton:="true"] because it is exposed to package 'javax.servlet' from resources oracle.eclipse.tools.webtier.jsf.facelet [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf.facelet"; singleton:="true"] and javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"] via two dependency chains.
-
-Chain 1:
-  oracle.eclipse.tools.webtier.jsf [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf"; singleton:="true"]
-    require: (&(osgi.wiring.bundle=oracle.eclipse.tools.webtier.jsf.facelet)(&(bundle-version>=17.2.0)(!(bundle-version>=18.0.0))))
-     |
-    provide: osgi.wiring.bundle: oracle.eclipse.tools.webtier.jsf.facelet
-  oracle.eclipse.tools.webtier.jsf.facelet [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf.facelet"; singleton:="true"]
-
-Chain 2:
-  oracle.eclipse.tools.webtier.jsf [osgi.identity; type="osgi.bundle"; version:Version="17.2.0.201806071916"; osgi.identity="oracle.eclipse.tools.webtier.jsf"; singleton:="true"]
-    require: (&(osgi.wiring.bundle=oracle.eclipse.tools.webtier.javawebapp)(&(bundle-version>=17.2.0)(!(bundle-version>=18.0.0))))
-     |
-    provide: osgi.wiring.bundle; bundle-version:Version="17.2.0.201806071916"; osgi.wiring.bundle="oracle.eclipse.tools.webtier.javawebapp"; singleton:="true"
-  org.apache.commons.logging [osgi.identity; type="osgi.bundle"; version:Version="1.2.0.v20180409-1502"; osgi.identity="org.apache.commons.logging"]
-    import: (osgi.wiring.package=javax.servlet)
-     |
-    export: osgi.wiring.package: javax.servlet
-  javax.servlet [osgi.identity; type="osgi.bundle"; version:Version="3.1.0.v201410161800"; osgi.identity="javax.servlet"]
-	at org.eclipse.osgi.container.Module.start(Module.java:447)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1685)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1664)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1627)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1558)
-	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
-	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:233)
-	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:343)
-
-!ENTRY org.eclipse.egit.ui 2 0 2018-12-27 11:00:20.330
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\maxco'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:01:32.488
-!MESSAGE The POM for com.oracle.ojdbc:ojdbc:jar:12.1.0.1 is missing, no dependency information available
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:01:33.193
-!MESSAGE The POM for com.oracle.ojdbc:ojdbc:jar:12.1.0.1 is missing, no dependency information available
-
-!ENTRY org.eclipse.ui 2 2 2018-12-27 11:01:57.753
-!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.foundation.ui, page: org.jboss.tools.foundation.ui.internal.credentials.CredentialPreferencePage)
-
-!ENTRY org.eclipse.ui 2 2 2018-12-27 11:01:57.773
-!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.runtime.ui, page: org.jboss.tools.runtime.preferences.RuntimePreferencePage)
-
-!ENTRY org.eclipse.ui 2 2 2018-12-27 11:01:57.782
-!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.usage, page: org.jboss.tools.usage.analytics.preferences.UsageAnalyticsPreferencePage)
-
-!ENTRY org.eclipse.ui 2 2 2018-12-27 11:01:57.791
-!MESSAGE Invalid preference category path: org.jboss.tools.common.model.ui.MainPreferencePage (bundle: org.jboss.tools.common.jdt.debug.ui, page: org.jboss.tools.common.jdt.debug.ui.preferences.RemoteDebugPreferencePage)
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:02:45.303
-!MESSAGE The POM for com.oracle.ojdbc:ojdbc:jar:12.1.0.1 is missing, no dependency information available
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:02:45.550
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:31:21.262
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:02:45.637
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:31:21.287
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:28:45.794
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:55.947
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:55.967
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:56.006
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:56.141
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:56.148
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:56.215
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:56.584
+!MESSAGE Waiting on ProgressObject:@174961287
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:56.839
+!MESSAGE ProgressObject completed :@174961287
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:56.849
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:57.024
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:57.446
+!MESSAGE Waiting on ProgressObject:@1269710062
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.009
+!MESSAGE ProgressObject completed :@1269710062
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.019
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.024
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.419
+!MESSAGE Waiting on ProgressObject:@1609855233
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.552
+!MESSAGE ProgressObject completed :@1609855233
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.568
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.589
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:31:58.594
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:33:44.024
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:28:49.887
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:33:44.063
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:29:14.950
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:46.515
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:46.534
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:46.566
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:46.650
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:46.664
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:46.709
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:47.164
+!MESSAGE Waiting on ProgressObject:@920801355
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:47.300
+!MESSAGE ProgressObject completed :@920801355
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:47.309
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:47.499
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:47.918
+!MESSAGE Waiting on ProgressObject:@1721888037
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.417
+!MESSAGE ProgressObject completed :@1721888037
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.436
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.454
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.745
+!MESSAGE Waiting on ProgressObject:@73442898
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.925
+!MESSAGE ProgressObject completed :@73442898
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.952
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.963
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:33:48.972
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:33:57.548
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:29:15.000
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:33:57.639
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:31:49.770
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:34:24.430
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:31:49.811
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:34:24.528
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:32:05.819
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:34:42.792
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:32:05.903
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:34:42.826
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:32:38.081
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.038
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.054
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.074
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.143
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.153
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.184
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.600
+!MESSAGE Waiting on ProgressObject:@750762172
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.749
+!MESSAGE ProgressObject completed :@750762172
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.759
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:47.981
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:48.447
+!MESSAGE Waiting on ProgressObject:@1017089486
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:48.918
+!MESSAGE ProgressObject completed :@1017089486
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:48.946
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:48.954
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:49.449
+!MESSAGE Waiting on ProgressObject:@648539748
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:49.595
+!MESSAGE ProgressObject completed :@648539748
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:49.605
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:49.629
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:34:49.646
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.jface.text 2 0 2018-12-27 13:42:05.387
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:42:12.656
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:32:38.114
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:42:12.725
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:33:27.594
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:43:00.685
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 11:33:27.681
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:43:00.721
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:45:00.776
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:45:00.808
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:45:55.425
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:45:55.456
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:40.861
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:40.907
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:40.921
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:40.994
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:41.012
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:41.074
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:41.907
+!MESSAGE Waiting on ProgressObject:@1468673035
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:42.142
+!MESSAGE ProgressObject completed :@1468673035
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:42.181
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:42.299
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:42.747
+!MESSAGE Waiting on ProgressObject:@1559270205
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.370
+!MESSAGE ProgressObject completed :@1559270205
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.400
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.416
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.760
+!MESSAGE Waiting on ProgressObject:@1222275783
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.901
+!MESSAGE ProgressObject completed :@1222275783
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.916
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.955
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:49:43.965
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:50:35.287
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:50:35.324
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:39.533
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:39.548
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:39.561
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:39.655
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:39.667
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:39.733
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:40.184
+!MESSAGE Waiting on ProgressObject:@700437417
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:40.330
+!MESSAGE ProgressObject completed :@700437417
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:40.347
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:40.493
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:41.075
+!MESSAGE Waiting on ProgressObject:@1687954271
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:41.655
+!MESSAGE ProgressObject completed :@1687954271
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:41.672
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:41.695
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:42.089
+!MESSAGE Waiting on ProgressObject:@511983571
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:42.239
+!MESSAGE ProgressObject completed :@511983571
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:42.277
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:42.293
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:50:42.310
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:51:31.018
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:51:31.095
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:34.333
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:34.337
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:34.356
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:34.452
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:34.460
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:34.491
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:34.861
+!MESSAGE Waiting on ProgressObject:@1803745967
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:35.000
+!MESSAGE ProgressObject completed :@1803745967
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:35.014
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:35.147
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:35.600
+!MESSAGE Waiting on ProgressObject:@1325813242
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.103
+!MESSAGE ProgressObject completed :@1325813242
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.115
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.125
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.448
+!MESSAGE Waiting on ProgressObject:@100059958
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.602
+!MESSAGE ProgressObject completed :@100059958
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.617
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.639
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 13:51:36.651
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:57:05.642
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 13:57:05.668
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:00:19.728
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:00:19.790
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:24.692
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:24.698
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:24.713
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:24.809
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:24.817
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:24.871
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:25.519
+!MESSAGE Waiting on ProgressObject:@1226350257
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:25.745
+!MESSAGE ProgressObject completed :@1226350257
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:25.759
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:25.892
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:26.366
+!MESSAGE Waiting on ProgressObject:@1480551598
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:26.805
+!MESSAGE ProgressObject completed :@1480551598
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:26.825
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:26.846
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:27.333
+!MESSAGE Waiting on ProgressObject:@125125917
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:27.455
+!MESSAGE ProgressObject completed :@125125917
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:27.474
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:27.486
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:00:27.500
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:01:47.520
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:01:47.553
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:50.788
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:50.798
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:50.817
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:50.909
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:50.919
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:50.952
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:51.403
+!MESSAGE Waiting on ProgressObject:@1925977493
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:51.518
+!MESSAGE ProgressObject completed :@1925977493
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:51.533
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:51.626
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:52.033
+!MESSAGE Waiting on ProgressObject:@912088482
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:52.513
+!MESSAGE ProgressObject completed :@912088482
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:52.532
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:52.546
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:53.075
+!MESSAGE Waiting on ProgressObject:@963837967
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:53.216
+!MESSAGE ProgressObject completed :@963837967
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:53.235
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:53.274
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:01:53.281
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:03:28.068
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:03:28.154
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:30.703
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:30.719
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:30.736
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:30.849
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:30.860
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:30.921
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:31.308
+!MESSAGE Waiting on ProgressObject:@1947448017
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:31.531
+!MESSAGE ProgressObject completed :@1947448017
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:31.548
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:31.672
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:32.119
+!MESSAGE Waiting on ProgressObject:@1446854151
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:32.811
+!MESSAGE ProgressObject completed :@1446854151
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:32.833
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:32.843
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:33.303
+!MESSAGE Waiting on ProgressObject:@975214211
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:33.420
+!MESSAGE ProgressObject completed :@975214211
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:33.436
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:33.516
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:03:33.525
+!MESSAGE Publishing finished.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:06:07.166
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-12-27 14:06:07.204
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:09.555
+!MESSAGE Publishing beginning.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:09.588
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:09.602
+!MESSAGE Total deleted modules: 0
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:09.698
+!MESSAGE Module changed:[Cryptids]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:09.708
+!MESSAGE Module Status: -Cryptids (change) (redeploy)
+
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:09.743
+!MESSAGE Status INFO: oracle.eclipse.tools.weblogic code=2000 ***dm.undeploy (undeploy) _auto_generated_ear_ null from targets [{Target=myserver, WebLogicTargetType=server, Name=_auto_generated_ear_}]
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:10.179
+!MESSAGE Waiting on ProgressObject:@967690057
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:10.287
+!MESSAGE ProgressObject completed :@967690057
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:10.297
+!MESSAGE Module _auto_generated_ear_ was undeployed from myserver sucessfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:10.439
+!MESSAGE ***dm.distribute (deploy) module _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:10.933
+!MESSAGE Waiting on ProgressObject:@1117993116
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:11.537
+!MESSAGE ProgressObject completed :@1117993116
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:11.555
+!MESSAGE _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:11.601
+!MESSAGE ***dm.start (startModule) _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:12.037
+!MESSAGE Waiting on ProgressObject:@1755123668
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:12.178
+!MESSAGE ProgressObject completed :@1755123668
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:12.190
+!MESSAGE Started _auto_generated_ear_
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:12.206
+!MESSAGE Module _auto_generated_ear_ deployed successfully.
+
+!ENTRY oracle.eclipse.tools.weblogic 1 2000 2018-12-27 14:06:12.217
+!MESSAGE Publishing finished.

@@ -16,12 +16,13 @@ public class CryptidDaoImpl implements CryptidDao {
 
 	public void createRequest(Cryptid c) {
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "INSERT INTO CRYPTID_CRYPTIDS(NAME,DIET,AVG_1WEIGHT,CLASS) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO CRYPTID_CRYPTIDS(CRYPTIDID,NAME,DIET,AVG_1WEIGHT,CLASS) VALUES (?,?,?,?,?)";
 			PreparedStatement p = con.prepareStatement(sql);
-			p.setString(1, c.getName());
-			p.setString(2, c.getDiet());
-			p.setInt(3, c.getAvgWeight());
-			p.setString(4, c.getCategory());
+			p.setInt(1, c.getId());
+			p.setString(2, c.getName());
+			p.setString(3, c.getDiet());
+			p.setInt(4, c.getAvgWeight());
+			p.setString(5, c.getCategory());
 			p.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,9 +35,9 @@ public class CryptidDaoImpl implements CryptidDao {
 	public void deleteRequest(Cryptid c) {
 
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "DELETE FROM CRYPTID_CRYPTIDS WHERE C_ID=?";
+			String sql = "DELETE FROM CRYPTID_CRYPTIDS WHERE CRYPTIDID=?";
 			PreparedStatement p = con.prepareStatement(sql);
-			p.setInt(c.getId(), 1);
+			p.setInt(1, c.getId());
 			p.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -45,10 +46,10 @@ public class CryptidDaoImpl implements CryptidDao {
 		}
 	}
 
-	public List<Cryptid> getAccountsById(int id) {
-		List<Cryptid> cl = new ArrayList<Cryptid>();
+	public Cryptid getAccountsById(int id) {
+		Cryptid cl = null;
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "SELECT * FROM CRYPTID_CRYPTIDS WHERE C_ID = ?";
+			String sql = "SELECT * FROM CRYPTID_CRYPTIDS WHERE CryptidID = ?";
 			PreparedStatement p = con.prepareStatement(sql);
 			p.setInt(1, id);
 			ResultSet rs = p.executeQuery();
@@ -56,9 +57,9 @@ public class CryptidDaoImpl implements CryptidDao {
 				int cid = rs.getInt("CRYPTIDID");
 				String name = rs.getString("NAME");
 				String diet = rs.getString("DIET");
-				int weight = rs.getInt("AVG_1WEGITH");
+				int weight = rs.getInt("AVG_1WEIGHT");
 				String category = rs.getString("CLASS");
-				cl.add(new Cryptid(cid, name, diet, weight, category));
+				cl= new Cryptid(cid, name, diet, weight, category);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,7 +71,7 @@ public class CryptidDaoImpl implements CryptidDao {
 
 	public void updateRequest(Cryptid c) {
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "UPDATE CRYPTID_CRYPTIDS SET WEIGHT=? WHERE C_ID = ?";
+			String sql = "UPDATE CRYPTID_CRYPTIDS SET AVG_1WEIGHT = ? WHERE CRYPTIDID = ?";
 			PreparedStatement p = con.prepareStatement(sql);
 			p.setInt(1, c.getAvgWeight());
 			p.setInt(2, c.getId());

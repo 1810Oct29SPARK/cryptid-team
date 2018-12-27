@@ -9,7 +9,7 @@ public interface CryptidService {
 	
 	public void deleteRequest(Cryptid c);
 	
-	public List<Cryptid> getAccountsById(int id);
+	public Cryptid getAccountsById(int id);
 	
 	public void updateRequest(Cryptid c);
 }

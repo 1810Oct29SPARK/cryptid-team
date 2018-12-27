@@ -26,7 +26,7 @@ public class CryptidServiceImpl implements CryptidService {
 	}
 
 	@Override
-	public List<Cryptid> getAccountsById(int id) {
+	public Cryptid getAccountsById(int id) {
 		return ad.getAccountsById(id);
 	}
 }

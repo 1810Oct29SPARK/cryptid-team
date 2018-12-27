@@ -1,7 +1,5 @@
 package daos;
 
-import java.util.List;
-
 import beans.Cryptid;
 
 public interface CryptidDao {
@@ -10,7 +8,7 @@ public interface CryptidDao {
 	
 	public void deleteRequest(Cryptid c);
 	
-	public List<Cryptid> getAccountsById(int id);
+	public Cryptid getAccountsById(int id);
 	
 	public void updateRequest(Cryptid c);
 }

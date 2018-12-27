@@ -16,10 +16,7 @@ public class Driver {
 		//init();
 		CryptidDao cryp = new CryptidDaoImpl();
 		
-		List<Cryptid> l = cryp.getAccountsById(1);
-		for(Cryptid c : l) {
-			System.out.println(c);
-		}
+		System.out.println(cryp.getAccountsById(1));
 		
 		
 	}
