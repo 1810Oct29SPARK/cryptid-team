@@ -31,3 +31,7 @@ insert into CRYPTID_CRYPTIDS (CryptidId, NAME, DIET, AVG_1WEIGHT, CLASS) values 
 insert into CRYPTID_CRYPTIDS (CryptidId, NAME, DIET, AVG_1WEIGHT, CLASS) values (8, 'Shae', null, 164, null);
 insert into CRYPTID_CRYPTIDS (CryptidId, NAME, DIET, AVG_1WEIGHT, CLASS) values (9, 'Ira', null, 212, null);
 insert into CRYPTID_CRYPTIDS (CryptidId, NAME, DIET, AVG_1WEIGHT, CLASS) values (10, 'Bartlet', null, 332, null);
+
+commit;
+
+SELECT * FROM CRYPTID_CRYPTIDS;
