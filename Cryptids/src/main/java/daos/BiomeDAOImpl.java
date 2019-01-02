@@ -45,7 +45,7 @@ public class BiomeDAOImpl implements BiomeDAO {
 		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
 			Session s = sf.getCurrentSession();
 			Transaction tx = s.beginTransaction();
-			s.persist(biome);
+			s.save(biome);
 			tx.commit();
 			s.close();
 		}
@@ -53,14 +53,24 @@ public class BiomeDAOImpl implements BiomeDAO {
 
 	@Override
 	public void updateBiome(Biome biome) {
-		// TODO Auto-generated method stub
-		
+		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
+			Session s = sf.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			s.update(biome);
+			tx.commit();
+			s.close();
+		}
 	}
 
 	@Override
 	public void deleteBiome(Biome biome) {
-		// TODO Auto-generated method stub
-		
+		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
+			Session s = sf.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			s.delete(biome);
+			tx.commit();
+			s.close();
+		}
 	}
 
 }
