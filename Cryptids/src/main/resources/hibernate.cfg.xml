@@ -19,5 +19,6 @@
 		<!-- "hibernate mapping to data definition language -->
 		<!-- locations of domain object mappings -->
 		<mapping class="beans.Biome"></mapping>
+		<mapping class="beans.Cryptid"></mapping>
 	</session-factory>
 </hibernate-configuration>

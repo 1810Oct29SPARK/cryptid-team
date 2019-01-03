@@ -1,14 +1,15 @@
 package daos;
 
+import java.util.List;
+
+import beans.Biome;
 import beans.Cryptid;
 
 public interface CryptidDao {
 
-	public void createRequest(Cryptid c);
-	
-	public void deleteRequest(Cryptid c);
-	
-	public Cryptid getAccountsById(int id);
-	
-	public void updateRequest(Cryptid c);
+	public Cryptid getCryptidById(int id);
+	public List<Cryptid> getAllCryptids();
+	public void addCryptid(Cryptid cryptid);
+	public void updateCryptid(Cryptid cryptid);
+	public void deleteCryptid(Cryptid cryptid);
 }

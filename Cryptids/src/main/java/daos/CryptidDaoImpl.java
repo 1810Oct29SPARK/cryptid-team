@@ -8,78 +8,72 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import beans.Biome;
 import beans.Cryptid;
 import util.ConnectionUtil;
+import util.HibernateUtil;
 
 public class CryptidDaoImpl implements CryptidDao {
-	private static final String filename = "connection.properties";
+	
+private SessionFactory sf = HibernateUtil.getSessionFactory();
+	
 
-	public void createRequest(Cryptid c) {
-		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "INSERT INTO CRYPTID_CRYPTIDS(CRYPTIDID,NAME,DIET,AVG_1WEIGHT,CLASS) VALUES (?,?,?,?,?)";
-			PreparedStatement p = con.prepareStatement(sql);
-			p.setInt(1, c.getId());
-			p.setString(2, c.getName());
-			p.setString(3, c.getDiet());
-			p.setInt(4, c.getAvgWeight());
-			p.setString(5, c.getCategory());
-			p.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	@Override
+	public Cryptid getCryptidById(int id) {
+		Cryptid c = null;
+		try(Session s = sf.getCurrentSession()){
+			Transaction tx = s.beginTransaction();
+			c = (Cryptid) s.get(Cryptid.class, id);
+			tx.commit();
+			s.close();
 		}
-
+		return c;
 	}
 
-	public void deleteRequest(Cryptid c) {
+	@Override
+	public List<Cryptid> getAllCryptids() {
+		List<Cryptid> cryptids = new ArrayList<>();
+		// use a query to retrieve all caves
+		try(Session s = sf.getCurrentSession()){
+			Transaction tx = s.beginTransaction();
+			cryptids = s.createQuery("from Cryptids").getResultList();
+			tx.commit();
+			s.close();
+		}
+		return cryptids;
+	}
 
-		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "DELETE FROM CRYPTID_CRYPTIDS WHERE CRYPTIDID=?";
-			PreparedStatement p = con.prepareStatement(sql);
-			p.setInt(1, c.getId());
-			p.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	@Override
+	public void addCryptid(Cryptid cryptid) {
+		try(Session s = sf.getCurrentSession()){
+			Transaction tx = s.beginTransaction();
+			s.save(cryptid);
+			tx.commit();
+			s.close();
 		}
 	}
 
-	public Cryptid getAccountsById(int id) {
-		Cryptid cl = null;
-		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "SELECT * FROM CRYPTID_CRYPTIDS WHERE CryptidID = ?";
-			PreparedStatement p = con.prepareStatement(sql);
-			p.setInt(1, id);
-			ResultSet rs = p.executeQuery();
-			while (rs.next()) {
-				int cid = rs.getInt("CRYPTIDID");
-				String name = rs.getString("NAME");
-				String diet = rs.getString("DIET");
-				int weight = rs.getInt("AVG_1WEIGHT");
-				String category = rs.getString("CLASS");
-				cl= new Cryptid(cid, name, diet, weight, category);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	@Override
+	public void updateCryptid(Cryptid cryptid) {
+		try(Session s = sf.getCurrentSession()){
+			Transaction tx = s.beginTransaction();
+			s.merge(cryptid);
+			tx.commit();
+			s.close();
 		}
-		return cl;
 	}
 
-	public void updateRequest(Cryptid c) {
-		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "UPDATE CRYPTID_CRYPTIDS SET AVG_1WEIGHT = ? WHERE CRYPTIDID = ?";
-			PreparedStatement p = con.prepareStatement(sql);
-			p.setInt(1, c.getAvgWeight());
-			p.setInt(2, c.getId());
-			p.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	@Override
+	public void deleteCryptid(Cryptid cryptid) {
+		try(Session s = sf.getCurrentSession()){
+			Transaction tx = s.beginTransaction();
+			s.delete(cryptid);
+			tx.commit();
+			s.close();
 		}
 	}
 
