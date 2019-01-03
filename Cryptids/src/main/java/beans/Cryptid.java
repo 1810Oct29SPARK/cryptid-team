@@ -1,6 +1,7 @@
 package beans;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,9 +9,34 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="CRYPTID_CRYPTIDS")
 public class Cryptid {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cryptidSequence")
+	@SequenceGenerator(allocationSize=50,name="cryptidSequence", sequenceName="SQ_CRYPTID_PK")
+	@Column(name="CRYPTIDID")
+	private int id;
+	
+	@Column(name="NAME")
+	private String name;
+	
+	@Column(name="DIET")
+	private String diet;
+	
+	@Column(name="AVG_1WEIGHT")
+	private int avgWeight;
+	
+	@Column(name="CLASS")
+	private String category;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="BIOMEID")
+	private Biome biome;
+	
 	public Cryptid(int id, String name, String diet, int avgWeight, String category, Biome biome) {
 		super();
 		this.id = id;
@@ -20,24 +46,6 @@ public class Cryptid {
 		this.category = category;
 		this.biome = biome;
 	}
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="cryptidSequence")
-	@SequenceGenerator(name="cryptidSequence", sequenceName="SQ_CRYPTID_PK")
-	@Column(name="CRYPTIDID")
-	private int id;
-	@Column(name="NAME")
-	private String name;
-	@Column(name="DIET")
-	private String diet;
-	@Column(name="AVG_1WEIGHT")
-	private int avgWeight;
-	@Column(name="CLASS")
-	private String category;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="BIOMEID")
-	private Biome biome;
 
 	public Cryptid() {
 	}

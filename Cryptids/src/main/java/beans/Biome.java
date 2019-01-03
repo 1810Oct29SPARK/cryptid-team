@@ -17,8 +17,10 @@ public class Biome {
 	@SequenceGenerator(name="biomeSequence", sequenceName="SQ_BIOME_PK") 
 	@Column(name="BIOMEID")
 	private int id;
+	
 	@Column(name="NAME")
 	private String name;
+	
 	@Column(name="FOLIAGE")
 	private String foliage;
 	

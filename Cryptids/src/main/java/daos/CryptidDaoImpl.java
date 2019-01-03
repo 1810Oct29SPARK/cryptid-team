@@ -40,7 +40,7 @@ private SessionFactory sf = HibernateUtil.getSessionFactory();
 		// use a query to retrieve all caves
 		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
-			cryptids = s.createQuery("from Cryptids").getResultList();
+			cryptids = s.createQuery("from Cryptid").getResultList();
 			tx.commit();
 			s.close();
 		}

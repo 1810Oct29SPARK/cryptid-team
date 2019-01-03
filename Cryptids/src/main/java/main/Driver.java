@@ -5,8 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import beans.Biome;
+import beans.Cryptid;
 import daos.BiomeDAO;
 import daos.BiomeDAOImpl;
+import daos.CryptidDao;
+import daos.CryptidDaoImpl;
 import util.HibernateUtil;
 
 public class Driver {
@@ -15,11 +18,13 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		//init();
-//		CryptidDao cryp = new CryptidDaoImpl();
+		CryptidDao cd = new CryptidDaoImpl();
 		BiomeDAO bd = new BiomeDAOImpl();
-		funWithSessionMethods(sf);
+//		funWithSessionMethods(sf);
 		
 //		System.out.println(cryp.getAccountsById(1));
+		
+								//BIOMES
 		
 //		get all biomes
 //		List<Biome> biomeList = bd.getAllBiomes();
@@ -42,6 +47,30 @@ public class Driver {
 		//delete biome
 //		Biome b = new Biome(102, "Volcano", "ashey");
 //		bd.deleteBiome(b);
+		
+								//CRYPTIDS
+		
+		//get all cryptids
+//		List<Cryptid> cl = cd.getAllCryptids();
+//		for (Cryptid c : cl) {
+//			System.out.println(c);
+//		}
+		
+		//get cryptid by id
+//		Cryptid c = cd.getCryptidById(1);
+//		System.out.println(c);
+		
+		//add cryptid
+//		Cryptid c = new Cryptid(11, "Bigfoot", "jerky", 400, "big ol' foot", null);
+//		cd.addCryptid(c);
+		
+		//update cryptid
+//		Cryptid c = new Cryptid(1, "Bigfoot", "jerky", 400, "big ol' foot", new Biome(52, "Plains", "grassy"));
+//		cd.updateCryptid(c);
+		
+		//delete cryptid
+//		Cryptid c = new Cryptid(2, "Volcano", "ashey", 0, null, null);
+//		cd.deleteCryptid(c);
 		
 	}
 	
