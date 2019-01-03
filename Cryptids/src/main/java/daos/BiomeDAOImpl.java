@@ -12,12 +12,13 @@ import util.HibernateUtil;
 
 public class BiomeDAOImpl implements BiomeDAO {
 	
+	private SessionFactory sf = HibernateUtil.getSessionFactory();
+	
 
 	@Override
 	public Biome getBiomeById(int id) {
 		Biome b = null;
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			b = (Biome) s.get(Biome.class, id);
 			tx.commit();
@@ -30,8 +31,7 @@ public class BiomeDAOImpl implements BiomeDAO {
 	public List<Biome> getAllBiomes() {
 		List<Biome> biomes = new ArrayList<>();
 		// use a query to retrieve all caves
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			biomes = s.createQuery("from Biome").getResultList();
 			tx.commit();
@@ -42,8 +42,7 @@ public class BiomeDAOImpl implements BiomeDAO {
 
 	@Override
 	public void addBiome(Biome biome) {
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			s.save(biome);
 			tx.commit();
@@ -53,10 +52,9 @@ public class BiomeDAOImpl implements BiomeDAO {
 
 	@Override
 	public void updateBiome(Biome biome) {
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
-			s.update(biome);
+			s.merge(biome);
 			tx.commit();
 			s.close();
 		}
@@ -64,8 +62,7 @@ public class BiomeDAOImpl implements BiomeDAO {
 
 	@Override
 	public void deleteBiome(Biome biome) {
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			s.delete(biome);
 			tx.commit();

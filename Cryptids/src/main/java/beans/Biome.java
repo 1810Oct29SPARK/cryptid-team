@@ -14,7 +14,7 @@ public class Biome {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="biomeSequence")
-	@SequenceGenerator(name="biomeSequence", sequenceName="SQ_BIOME_PK")
+	@SequenceGenerator(name="biomeSequence", sequenceName="SQ_BIOME_PK") 
 	@Column(name="BIOMEID")
 	private int id;
 	@Column(name="NAME")
