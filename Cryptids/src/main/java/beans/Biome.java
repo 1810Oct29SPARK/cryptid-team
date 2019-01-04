@@ -1,10 +1,14 @@
 package beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,6 +28,16 @@ public class Biome {
 	@Column(name="FOLIAGE")
 	private String foliage;
 	
+	//bidirectional mapping, lazily fetched
+	@OneToMany(mappedBy = "biome", fetch=FetchType.LAZY)
+	private List<Cryptid> crytpids;
+	
+	public List<Cryptid> getCrytpids() {
+		return crytpids;
+	}
+	public void setCrytpids(List<Cryptid> crytpids) {
+		this.crytpids = crytpids;
+	}
 	@Override
 	public String toString() {
 		return "Biome [id=" + id + ", name=" + name + ", foliage=" + foliage + "]";

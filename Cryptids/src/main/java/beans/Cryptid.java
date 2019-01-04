@@ -1,15 +1,27 @@
 package beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+
+@NamedQueries({
+	@NamedQuery(name="getAllCryptids", query="from Cryptid"),
+	@NamedQuery(name="getCryptidsByBiome", query="from Cryptid where biomeid= :typevar")
+})
 
 @Entity
 @Table(name="CRYPTID_CRYPTIDS")
@@ -33,8 +45,9 @@ public class Cryptid {
 	@Column(name="CLASS")
 	private String category;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="BIOMEID")
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+//	@Cascade(cascade = {CascadeType.ALL}, value = { null })
+	@JoinColumn(name="BIOMEID",foreignKey=@ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private Biome biome;
 	
 	public Cryptid(int id, String name, String diet, int avgWeight, String category, Biome biome) {

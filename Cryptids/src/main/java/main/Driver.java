@@ -1,8 +1,12 @@
 package main;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import beans.Biome;
 import beans.Cryptid;
@@ -21,8 +25,8 @@ public class Driver {
 		CryptidDao cd = new CryptidDaoImpl();
 		BiomeDAO bd = new BiomeDAOImpl();
 //		funWithSessionMethods(sf);
-		
-//		System.out.println(cryp.getAccountsById(1));
+//		funWithNamedQueries(sf);
+		funWithCascadesAndMappings(sf);
 		
 								//BIOMES
 		
@@ -72,6 +76,45 @@ public class Driver {
 //		Cryptid c = new Cryptid(2, "Volcano", "ashey", 0, null, null);
 //		cd.deleteCryptid(c);
 		
+	}
+	
+	static void funWithCascadesAndMappings(SessionFactory sf) {
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		
+		//get list of cryptids of a certain type from Plains Biome
+		Biome b = (Biome) s.get(Biome.class, 52);
+		System.out.println(b.getName());
+		System.out.println(b.getCrytpids());
+		
+		tx.commit();
+		s.close();
+	}
+	
+	static void funWithNamedQueries(SessionFactory sf) {
+		
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		
+		//get all cryptids
+		Query q = s.getNamedQuery("getAllCryptids");
+		List<Cryptid> cryptidList = q.getResultList();
+		System.out.println(cryptidList.size());
+		Iterator<Cryptid> it = cryptidList.iterator();
+		while (it.hasNext()) {
+			System.out.println(it.next());
+		}
+		
+		//looking for Cryptids in Plains(biomeid 52)
+		Query q1 = s.createNamedQuery("getCryptidsByBiome", Cryptid.class);
+		q1.setParameter("typevar", 52); 
+		List<Cryptid> cryptidInBiome = q1.getResultList();
+		for (Cryptid c : cryptidInBiome) {
+			System.out.println(c);
+		}
+		
+		tx.commit();
+		s.close();
 	}
 	
 	static void funWithSessionMethods(SessionFactory sf) {
