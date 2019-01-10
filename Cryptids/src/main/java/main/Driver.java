@@ -19,84 +19,90 @@ import util.HibernateUtil;
 public class Driver {
 
 	static SessionFactory sf = HibernateUtil.getSessionFactory();
-	
+
 	public static void main(String[] args) {
-		//init();
+		// init();
 		CryptidDao cd = new CryptidDaoImpl();
 		BiomeDAO bd = new BiomeDAOImpl();
 //		funWithSessionMethods(sf);
 //		funWithNamedQueries(sf);
-		funWithCascadesAndMappings(sf);
-		
-								//BIOMES
-		
+//		funWithMappings(sf);
+
+		// BIOMES
+
 //		get all biomes
 //		List<Biome> biomeList = bd.getAllBiomes();
 //		for (Biome b : biomeList) {
 //			System.out.println(b);
 //		}
-		
-		//get biome by ID
+
+		// get biome by ID
 //		Biome b = bd.getBiomeById(52);
 //		System.out.println(b);
-		
-		//add biome
+
+		// add biome
 //		Biome b = new Biome(20, "Volcano", "hot");
 //		bd.addBiome(b);
-		
-		//update biome
+
+		// update biome
 //		Biome b = new Biome(102, "Volcano", "ashey");
 //		bd.updateBiome(b);
-		
-		//delete biome
+
+		// delete biome
 //		Biome b = new Biome(102, "Volcano", "ashey");
 //		bd.deleteBiome(b);
-		
-								//CRYPTIDS
-		
-		//get all cryptids
-//		List<Cryptid> cl = cd.getAllCryptids();
-//		for (Cryptid c : cl) {
-//			System.out.println(c);
-//		}
-		
-		//get cryptid by id
+
+		// CRYPTIDS
+
+		// get all cryptids
+		List<Cryptid> cl = cd.getAllCryptids();
+		for (Cryptid c : cl) {
+			System.out.println(c);
+		}
+
+		// get cryptid by id
 //		Cryptid c = cd.getCryptidById(1);
 //		System.out.println(c);
-		
-		//add cryptid
+
+		// add cryptid
 //		Cryptid c = new Cryptid(11, "Bigfoot", "jerky", 400, "big ol' foot", null);
 //		cd.addCryptid(c);
-		
-		//update cryptid
+
+		// update cryptid
 //		Cryptid c = new Cryptid(1, "Bigfoot", "jerky", 400, "big ol' foot", new Biome(52, "Plains", "grassy"));
 //		cd.updateCryptid(c);
-		
-		//delete cryptid
+
+		// delete cryptid
 //		Cryptid c = new Cryptid(2, "Volcano", "ashey", 0, null, null);
 //		cd.deleteCryptid(c);
-		
+
 	}
-	
-	static void funWithCascadesAndMappings(SessionFactory sf) {
+
+	static void funWithMappings(SessionFactory sf) {
 		Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
-		
-		//get list of cryptids of a certain type from Plains Biome
+
+		// get list of cryptids of a certain type from Plains Biome
 		Biome b = (Biome) s.get(Biome.class, 52);
 		System.out.println(b.getName());
-		System.out.println(b.getCrytpids());
-		
+		System.out.println(b.getCryptids());
+
+//		Cryptid c = s.get(Cryptid.class, 10);
+
+//		for (Biome bi : c) {
+//			
+//		}
+
 		tx.commit();
 		s.close();
 	}
-	
+
 	static void funWithNamedQueries(SessionFactory sf) {
-		
+
 		Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
-		
-		//get all cryptids
+
+		// get all cryptids
 		Query q = s.getNamedQuery("getAllCryptids");
 		List<Cryptid> cryptidList = q.getResultList();
 		System.out.println(cryptidList.size());
@@ -104,32 +110,32 @@ public class Driver {
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
-		
-		//looking for Cryptids in Plains(biomeid 52)
+
+		// looking for Cryptids in Plains(biomeid 52)
 		Query q1 = s.createNamedQuery("getCryptidsByBiome", Cryptid.class);
-		q1.setParameter("typevar", 52); 
+		q1.setParameter("typevar", 52);
 		List<Cryptid> cryptidInBiome = q1.getResultList();
 		for (Cryptid c : cryptidInBiome) {
 			System.out.println(c);
 		}
-		
+
 		tx.commit();
 		s.close();
 	}
-	
+
 	static void funWithSessionMethods(SessionFactory sf) {
-		//create a session
+		// create a session
 		Session s = sf.getCurrentSession();
 		Transaction tx = s.beginTransaction();
-		
-		//get and load
+
+		// get and load
 //		Biome b = s.get(Biome.class, 33); //this will be null
 //		System.out.println(b);
-		
+
 //		ObjectNotFoundExcpetion
 //		Biome b1 = s.load(Biome.class, 35);
 //		System.out.println(b1);
-		
+
 //		Biome b2 = s.load(Biome.class, 1);
 //		System.out.println(b2);
 //		
@@ -138,30 +144,30 @@ public class Driver {
 //		
 		tx.commit();
 		s.close();
-		
+
 //		System.out.println(b2); throws a LazyInitializationException if this was not used inside the session
-		//if we create another session, b2 is still detached
-		
+		// if we create another session, b2 is still detached
+
 		Session s2 = sf.getCurrentSession();
 		Transaction tx2 = s2.beginTransaction();
-		
-		//throws exception
+
+		// throws exception
 //		s2.persist(b2);
-		
-		//creates duplicate
+
+		// creates duplicate
 //		s2.save(b2);
-		
-		//update and merge
+
+		// update and merge
 //		Biome b3 = new Biome(152, "Lake", "Wet");
 //		s2.update(b3);
-		
-		//get a persistent cave
+
+		// get a persistent cave
 //		Biome b4 = s2.get(Biome.class, 1); //in persistent state
 //		b4.setName("Swamp"); //automatic dirty checking will update this at end of the session
-		
-		//update something that does not exist
+
+		// update something that does not exist
 //		s2.update(new Biome(300, "Brooklyn", "literally uninhabitable"));
-		
+
 		tx2.commit();
 		s2.close();
 	}

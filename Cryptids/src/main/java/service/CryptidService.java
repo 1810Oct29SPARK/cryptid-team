@@ -5,11 +5,13 @@ import beans.Cryptid;
 
 public interface CryptidService {
 
-	public void createRequest(Cryptid c);
+	public void addCryptid(Cryptid c);
 	
-	public void deleteRequest(Cryptid c);
+	public void deleteCryptid(Cryptid c);
 	
-	public Cryptid getAccountsById(int id);
+	public Cryptid getCryptidsById(int id);
 	
-	public void updateRequest(Cryptid c);
+	public List<Cryptid> getAllCryptids();
+	
+	public void updateCryptid(Cryptid c);
 }

@@ -18,14 +18,13 @@ import util.ConnectionUtil;
 import util.HibernateUtil;
 
 public class CryptidDaoImpl implements CryptidDao {
-	
-private SessionFactory sf = HibernateUtil.getSessionFactory();
-	
+
+	private SessionFactory sf = HibernateUtil.getSessionFactory();
 
 	@Override
 	public Cryptid getCryptidById(int id) {
 		Cryptid c = null;
-		try(Session s = sf.getCurrentSession()){
+		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			c = (Cryptid) s.get(Cryptid.class, id);
 			tx.commit();
@@ -38,7 +37,7 @@ private SessionFactory sf = HibernateUtil.getSessionFactory();
 	public List<Cryptid> getAllCryptids() {
 		List<Cryptid> cryptids = new ArrayList<>();
 		// use a query to retrieve all caves
-		try(Session s = sf.getCurrentSession()){
+		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			cryptids = s.createQuery("from Cryptid").getResultList();
 			tx.commit();
@@ -49,7 +48,7 @@ private SessionFactory sf = HibernateUtil.getSessionFactory();
 
 	@Override
 	public void addCryptid(Cryptid cryptid) {
-		try(Session s = sf.getCurrentSession()){
+		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			s.save(cryptid);
 			tx.commit();
@@ -59,7 +58,7 @@ private SessionFactory sf = HibernateUtil.getSessionFactory();
 
 	@Override
 	public void updateCryptid(Cryptid cryptid) {
-		try(Session s = sf.getCurrentSession()){
+		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			s.merge(cryptid);
 			tx.commit();
@@ -69,7 +68,7 @@ private SessionFactory sf = HibernateUtil.getSessionFactory();
 
 	@Override
 	public void deleteCryptid(Cryptid cryptid) {
-		try(Session s = sf.getCurrentSession()){
+		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			s.delete(cryptid);
 			tx.commit();

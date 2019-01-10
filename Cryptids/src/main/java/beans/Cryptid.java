@@ -18,38 +18,36 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 
-@NamedQueries({
-	@NamedQuery(name="getAllCryptids", query="from Cryptid"),
-	@NamedQuery(name="getCryptidsByBiome", query="from Cryptid where biomeid= :typevar")
-})
+@NamedQueries({ @NamedQuery(name = "getAllCryptids", query = "from Cryptid"),
+		@NamedQuery(name = "getCryptidsByBiome", query = "from Cryptid where biomeid= :typevar") })
 
 @Entity
-@Table(name="CRYPTID_CRYPTIDS")
+@Table(name = "CRYPTID_CRYPTIDS")
 public class Cryptid {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cryptidSequence")
-	@SequenceGenerator(allocationSize=50,name="cryptidSequence", sequenceName="SQ_CRYPTID_PK")
-	@Column(name="CRYPTIDID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cryptidSequence")
+	@SequenceGenerator(allocationSize = 50, name = "cryptidSequence", sequenceName = "SQ_CRYPTID_PK")
+	@Column(name = "CRYPTIDID")
 	private int id;
-	
-	@Column(name="NAME")
+
+	@Column(name = "NAME")
 	private String name;
-	
-	@Column(name="DIET")
+
+	@Column(name = "DIET")
 	private String diet;
-	
-	@Column(name="AVG_1WEIGHT")
+
+	@Column(name = "AVG_1WEIGHT")
 	private int avgWeight;
-	
-	@Column(name="CLASS")
+
+	@Column(name = "CLASS")
 	private String category;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-//	@Cascade(cascade = {CascadeType.ALL}, value = { null })
-	@JoinColumn(name="BIOMEID",foreignKey=@ForeignKey(ConstraintMode.NO_CONSTRAINT))
+
+	// unidirectional relationship with cryptid, biome (child entity) manages
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL, CascadeType.REMOVE })
+	@JoinColumn(name = "BIOMEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private Biome biome;
-	
+
 	public Cryptid(int id, String name, String diet, int avgWeight, String category, Biome biome) {
 		super();
 		this.id = id;

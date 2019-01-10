@@ -1,32 +1,40 @@
-//package service;
-//
-//import java.util.List;
-//
-//import beans.Cryptid;
-//import daos.CryptidDao;
-//import daos.CryptidDaoImpl;
-//
-//public class CryptidServiceImpl implements CryptidService {
-//	private CryptidDao ad = new CryptidDaoImpl();
-//	@Override
-//	public void createRequest(Cryptid a) {
-//		ad.createRequest(a);
-//		
-//	}
-//
-//	@Override
-//	public void deleteRequest(Cryptid a) {
-//		ad.deleteRequest(a);
-//		
-//	}
-//	
-//	@Override
-//	public void updateRequest(Cryptid a) {
-//		ad.updateRequest(a);
-//	}
-//
-//	@Override
-//	public Cryptid getAccountsById(int id) {
-//		return ad.getAccountsById(id);
-//	}
-//}
+package service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import beans.Cryptid;
+import daos.CryptidDao;
+import daos.CryptidDaoImpl;
+
+@Service(value="cryptidService")
+public class CryptidServiceImpl implements CryptidService {
+	private CryptidDao cd = new CryptidDaoImpl();
+	@Override
+	public void addCryptid(Cryptid c) {
+		cd.addCryptid(c);
+		
+	}
+
+	@Override
+	public void deleteCryptid(Cryptid c) {
+		cd.deleteCryptid(c);
+		
+	}
+	
+	@Override
+	public void updateCryptid(Cryptid c) {
+		cd.updateCryptid(c);
+	}
+
+	@Override
+	public Cryptid getCryptidsById(int id) {
+		return cd.getCryptidById(id);
+	}
+
+	@Override
+	public List<Cryptid> getAllCryptids() {
+		return cd.getAllCryptids();
+	}
+}

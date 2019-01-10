@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Cryptid" table="CRYPTID_CRYPTIDS">
+
+		<meta attribute="class-description">
+			This class contains the cryptid detail.
+		</meta>
+		
+		<cache usage="read-write" />
+
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+
+		<property name="name" column="NAME" type="string" />
+		<property name="diet" column="DIET" type="string" />
+		<property name="avgWeight" column="AVG_1WEIGHT" type="int" />
+		<property name="class" column="CATEGORY" type="string" />
+		<property name="biomeid" column="BIOMEID" type="int" />
+
+		<!-- List of XML mapping files -->
+		
+	</class>
+</hibernate-mapping>

@@ -2,8 +2,10 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-<!-- the above specifies the DTD (or Document Type Definition) for a Hibernate config file-->
-<!-- this file is considered valid if it conforms to the allowed element listed in the DTD (or XSD, XML Schema definition) -->
+<!-- the above specifies the DTD (or Document Type Definition) for a Hibernate 
+	config file -->
+<!-- this file is considered valid if it conforms to the allowed element 
+	listed in the DTD (or XSD, XML Schema definition) -->
 <!-- an XML file can be "well-formed" without being "valid" -->
 <hibernate-configuration>
 	<session-factory>
@@ -16,9 +18,14 @@
 		<!-- choose whether to start fresh or update existing DDL -->
 		<!-- update by default -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.cache.provider_class">
+			org.hibernate.cache.EhCacheProvider
+		</property>
 		<!-- "hibernate mapping to data definition language -->
 		<!-- locations of domain object mappings -->
 		<mapping class="beans.Biome"></mapping>
 		<mapping class="beans.Cryptid"></mapping>
+		<!-- <mapping resource="hibernate.cryptid.xml"></mapping> -->
+
 	</session-factory>
 </hibernate-configuration>
