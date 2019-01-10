@@ -1,7 +1,7 @@
-package service;
+package com.revature.service;
 import java.util.List;
 
-import beans.Cryptid;
+import com.revature.beans.Cryptid;
 
 public interface CryptidService {
 
@@ -13,5 +13,5 @@ public interface CryptidService {
 	
 	public List<Cryptid> getAllCryptids();
 	
-	public void updateCryptid(Cryptid c);
+	public Cryptid updateCryptid(Cryptid c);
 }

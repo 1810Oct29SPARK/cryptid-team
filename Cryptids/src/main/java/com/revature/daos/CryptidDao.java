@@ -1,9 +1,9 @@
-package daos;
+package com.revature.daos;
 
 import java.util.List;
 
-import beans.Biome;
-import beans.Cryptid;
+import com.revature.beans.Biome;
+import com.revature.beans.Cryptid;
 
 public interface CryptidDao {
 
@@ -13,7 +13,7 @@ public interface CryptidDao {
 
 	public void addCryptid(Cryptid cryptid);
 
-	public void updateCryptid(Cryptid cryptid);
+	public Cryptid updateCryptid(Cryptid cryptid);
 
 	public void deleteCryptid(Cryptid cryptid);
 }

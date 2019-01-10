@@ -1,8 +1,8 @@
-package daos;
+package com.revature.daos;
 
 import java.util.List;
 
-import beans.Biome;
+import com.revature.beans.Biome;
 
 public interface BiomeDAO {
 

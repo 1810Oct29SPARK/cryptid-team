@@ -1,12 +1,12 @@
-package service;
+package com.revature.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import beans.Cryptid;
-import daos.CryptidDao;
-import daos.CryptidDaoImpl;
+import com.revature.beans.Cryptid;
+import com.revature.daos.CryptidDao;
+import com.revature.daos.CryptidDaoImpl;
 
 @Service(value="cryptidService")
 public class CryptidServiceImpl implements CryptidService {
@@ -24,8 +24,8 @@ public class CryptidServiceImpl implements CryptidService {
 	}
 	
 	@Override
-	public void updateCryptid(Cryptid c) {
-		cd.updateCryptid(c);
+	public Cryptid updateCryptid(Cryptid c) {
+		return cd.updateCryptid(c);
 	}
 
 	@Override

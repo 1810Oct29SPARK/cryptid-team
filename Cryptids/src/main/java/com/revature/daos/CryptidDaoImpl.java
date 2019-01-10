@@ -1,4 +1,4 @@
-package daos;
+package com.revature.daos;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,15 +12,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import beans.Biome;
-import beans.Cryptid;
-import util.ConnectionUtil;
-import util.HibernateUtil;
+import com.revature.beans.Biome;
+import com.revature.beans.Cryptid;
+import com.revature.util.ConnectionUtil;
+import com.revature.util.HibernateUtil;
 
 public class CryptidDaoImpl implements CryptidDao {
 
 	private SessionFactory sf = HibernateUtil.getSessionFactory();
-
+	
 	@Override
 	public Cryptid getCryptidById(int id) {
 		Cryptid c = null;
@@ -57,13 +57,15 @@ public class CryptidDaoImpl implements CryptidDao {
 	}
 
 	@Override
-	public void updateCryptid(Cryptid cryptid) {
+	public Cryptid updateCryptid(Cryptid cryptid) {
+		Cryptid c = null;
 		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			s.merge(cryptid);
 			tx.commit();
 			s.close();
 		}
+		return c;
 	}
 
 	@Override

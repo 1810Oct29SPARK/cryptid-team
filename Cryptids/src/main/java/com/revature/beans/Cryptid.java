@@ -1,4 +1,4 @@
-package beans;
+package com.revature.beans;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,9 +48,8 @@ public class Cryptid {
 	@JoinColumn(name = "BIOMEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private Biome biome;
 
-	public Cryptid(int id, String name, String diet, int avgWeight, String category, Biome biome) {
+	public Cryptid(String name, String diet, int avgWeight, String category, Biome biome) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.diet = diet;
 		this.avgWeight = avgWeight;
@@ -71,7 +70,7 @@ public class Cryptid {
 
 	@Override
 	public String toString() {
-		return "Cryptid [id=" + id + ", name=" + name + ", diet=" + diet + ", avgWeight=" + avgWeight + ", category="
+		return "Cryptid [name=" + name + ", diet=" + diet + ", avgWeight=" + avgWeight + ", category="
 				+ category + ", biome=" + biome + "]";
 	}
 

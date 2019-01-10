@@ -1,4 +1,4 @@
-package daos;
+package com.revature.daos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import beans.Biome;
-import util.HibernateUtil;
+import com.revature.beans.Biome;
+import com.revature.util.HibernateUtil;
 
 public class BiomeDAOImpl implements BiomeDAO {
 

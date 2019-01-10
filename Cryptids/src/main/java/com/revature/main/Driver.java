@@ -1,4 +1,4 @@
-package main;
+package com.revature.main;
 
 import java.util.Iterator;
 import java.util.List;
@@ -8,13 +8,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import beans.Biome;
-import beans.Cryptid;
-import daos.BiomeDAO;
-import daos.BiomeDAOImpl;
-import daos.CryptidDao;
-import daos.CryptidDaoImpl;
-import util.HibernateUtil;
+import com.revature.beans.Biome;
+import com.revature.beans.Cryptid;
+import com.revature.daos.BiomeDAO;
+import com.revature.daos.BiomeDAOImpl;
+import com.revature.daos.CryptidDao;
+import com.revature.daos.CryptidDaoImpl;
+import com.revature.util.HibernateUtil;
 
 public class Driver {
 
@@ -55,10 +55,10 @@ public class Driver {
 		// CRYPTIDS
 
 		// get all cryptids
-		List<Cryptid> cl = cd.getAllCryptids();
-		for (Cryptid c : cl) {
-			System.out.println(c);
-		}
+//		List<Cryptid> cl = cd.getAllCryptids();
+//		for (Cryptid c : cl) {
+//			System.out.println(c);
+//		}
 
 		// get cryptid by id
 //		Cryptid c = cd.getCryptidById(1);
@@ -85,7 +85,7 @@ public class Driver {
 		// get list of cryptids of a certain type from Plains Biome
 		Biome b = (Biome) s.get(Biome.class, 52);
 		System.out.println(b.getName());
-		System.out.println(b.getCryptids());
+//		System.out.println(b.getCryptids());
 
 //		Cryptid c = s.get(Cryptid.class, 10);
 

@@ -1,4 +1,4 @@
-package beans;
+package com.revature.beans;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,36 +30,33 @@ public class Biome {
 	private String foliage;
 
 	// bidirectional mapping, lazily fetched
-	@OneToMany(mappedBy = "biome", fetch = FetchType.LAZY)
-	private List<Cryptid> cryptids = new ArrayList<>();
-
-	public void addCryptid(Cryptid cryptid) {
-		cryptids.add(cryptid);
-		cryptid.setBiome(this);
-	}
-
-	public void removeCryptid(Cryptid cryptid) {
-		cryptids.remove(cryptid);
-	}
-
-	public List<Cryptid> getCryptids() {
-		return cryptids;
-	}
-
-	public void setCryptids(List<Cryptid> crytpids) {
-		this.cryptids = crytpids;
-	}
-
-	
+//	@OneToMany(mappedBy = "biome", fetch = FetchType.LAZY)
+//	private List<Cryptid> cryptids = new ArrayList<>();
+//
+//	public void addCryptid(Cryptid cryptid) {
+//		cryptids.add(cryptid);
+//		cryptid.setBiome(this);
+//	}
+//
+//	public void removeCryptid(Cryptid cryptid) {
+//		cryptids.remove(cryptid);
+//	}
+//
+//	public List<Cryptid> getCryptids() {
+//		return cryptids;
+//	}
+//
+//	public void setCryptids(List<Cryptid> crytpids) {
+//		this.cryptids = crytpids;
+//	}
 
 	@Override
 	public String toString() {
-		return "Biome [id=" + id + ", name=" + name + ", foliage=" + foliage + "]";
+		return "Biome [name=" + name + ", foliage=" + foliage + "]";
 	}
 
-	public Biome(int id, String name, String foliage) {
+	public Biome(String name, String foliage) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.foliage = foliage;
 	}

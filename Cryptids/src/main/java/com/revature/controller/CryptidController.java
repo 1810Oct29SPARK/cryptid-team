@@ -1,4 +1,4 @@
-package controller;
+package com.revature.controller;
 
 import java.util.List;
 
@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import beans.Cryptid;
-
-import service.CryptidService;
+import com.revature.beans.Cryptid;
+import com.revature.service.CryptidService;
 
 @Controller
 @RequestMapping(value="/cryptid")
@@ -27,12 +26,13 @@ public class CryptidController {
 	
 	@RequestMapping(value="/all", method=RequestMethod.GET)
 	@ResponseBody //return just data
-	public ResponseEntity<List<Cryptid>> getAllcryptids(){
+	public ResponseEntity<List<Cryptid>> getAllCryptids(){
 		return new ResponseEntity<>(cryptidService.getAllCryptids(), HttpStatus.OK);
 		
 	}
 	
 	@GetMapping(value="/{id}")
+	@ResponseBody
 	public ResponseEntity<Cryptid> getCryptidById(@PathVariable int id){
 		Cryptid c = cryptidService.getCryptidsById(id);
 		if (c == null) {
@@ -44,13 +44,13 @@ public class CryptidController {
 	
 	@PostMapping(value="/add")
 	@ResponseBody
-	public ResponseEntity<String> addcryptid(@RequestBody Cryptid cryptid){
+	public ResponseEntity<String> addCryptid(@RequestBody Cryptid cryptid){
 		ResponseEntity<String> resp = null;
 		try {
 			cryptidService.addCryptid(cryptid);
-			resp = new ResponseEntity<>("cryptid CREATED SUCCESSFULLY", HttpStatus.OK);
+			resp = new ResponseEntity<>("CRYPTID CREATED SUCCESSFULLY", HttpStatus.OK);
 		} catch (Exception e) {
-			resp = new ResponseEntity<>("FAILED TO CREATE cryptid", HttpStatus.BAD_REQUEST);
+			resp = new ResponseEntity<>("FAILED TO CREATE CRYPTID", HttpStatus.BAD_REQUEST);
 		}
 		return resp;
 	}
